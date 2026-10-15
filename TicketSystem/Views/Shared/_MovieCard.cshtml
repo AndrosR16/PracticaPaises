@@ -1,0 +1,18 @@
+﻿@model TicketSystem.DTOs.Movie; 
+
+<div class="col-md-3 mb-4">
+
+    <div class="card h-100 shadow-sm">
+        <img src="@Model.PosterUrl" alt="@Model.title" class="card-img-top">
+
+        <div class="card-body d-flex flex-column">
+            <h5 class="card-title">@Model.title</h5>
+            <p class="card-text">⭐ @Model.vote_average.ToString("0.0") / 10</p>
+
+            <a asp-controller = "Movie" asp-action = "Details" asp-route-id="@Model.id" class = "btn btn-primary mt-auto">View More</a>
+
+        </div>
+
+    </div>
+
+</div>

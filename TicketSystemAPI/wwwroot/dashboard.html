@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CinemaApp - Dashboar</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    
+    <main>
+        <h1>CinemaApp - Movie Dashboard</h1>
+        <p>Información obtenida desde nuestra propia API</p>
+    
+        <section class="metrics">
+            <div>
+                <h3>Total Peliculas</h3>
+                <h2 id="totalMovies">0</h2>
+            </div>
+
+            <div>
+                <h3>Géneros Disponibles</h3>
+                <h2 id="totalGenres"></h2>
+            </div>
+
+            <div>
+                <h3>Duración Promedio</h3>
+                <h2 id="averageDuration"></h2>
+            </div>
+
+        </section>
+
+        <section id="charts">
+            <div>
+                <h3>Películas por Género</h3>
+                <canvas id="genreChart"></canvas>
+            </div>
+
+            <div>
+                <h3>Duracion por película</h3>
+                <canvas id ="durationChart"></canvas>
+            </div>
+        </section>
+        
+        <p id="errorMessage" role="alert"></p>
+        
+    </main>
+
+    <script src="/lib/Chart.js/chart.umd.js"></script>
+    <script src="/js/dashboard.js"></script>
+
+
+</body>
+</html>

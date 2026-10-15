@@ -1,0 +1,174 @@
+﻿@model TicketSystem.DTOs.Country
+
+@{
+    ViewData["Title"] = "Detalle del País";
+
+    var borderCountries =
+        ViewBag.BorderCountries as List<TicketSystem.DTOs.Country>;
+}
+
+<div class="container mt-4">
+
+    <div class="card">
+
+        <div class="row g-0">
+
+            <div class="col-md-5">
+
+                <img src="@Model.FlagUrl"
+                     class="img-fluid rounded-start"
+                     alt="Bandera de @Model.name"
+                     style="width: 100%; height: 100%; object-fit: contain; padding: 30px;" />
+
+            </div>
+
+            <div class="col-md-7">
+
+                <div class="card-body">
+
+                    <h1 class="card-title mb-4">
+                        @Model.name
+                    </h1>
+
+                    <p>
+                        <strong>Nombre nativo:</strong>
+                        @Model.nativeName
+                    </p>
+
+                    <p>
+                        <strong>Capital:</strong>
+                        @Model.capital
+                    </p>
+
+                    <p>
+                        <strong>Región:</strong>
+                        @Model.region
+                    </p>
+
+                    <p>
+                        <strong>Subregión:</strong>
+                        @Model.subregion
+                    </p>
+
+                    <p>
+                        <strong>Población:</strong>
+                        @Model.population.ToString("N0")
+                    </p>
+
+                    <p>
+                        <strong>Área:</strong>
+                        @Model.area?.ToString("N0") km²
+                    </p>
+
+                    <p>
+                        <strong>Código Alpha 2:</strong>
+                        @Model.alpha2Code
+                    </p>
+
+                    <p>
+                        <strong>Código Alpha 3:</strong>
+                        @Model.alpha3Code
+                    </p>
+
+                    @if (Model.callingCodes != null && Model.callingCodes.Count > 0)
+                    {
+                        <p>
+                            <strong>Código telefónico:</strong>
+                            +@string.Join(", +", Model.callingCodes)
+                        </p>
+                    }
+
+                    @if (Model.currencies != null && Model.currencies.Count > 0)
+                    {
+                        <p>
+                            <strong>Moneda:</strong>
+
+                            @foreach (var currency in Model.currencies)
+                            {
+                                <span>
+                                    @currency.name (@currency.symbol)
+                                </span>
+                            }
+                        </p>
+                    }
+
+                    @if (Model.languages != null && Model.languages.Count > 0)
+                    {
+                        <p>
+                            <strong>Idiomas:</strong>
+                            @string.Join(", ", Model.languages.Select(language => language.name))
+                        </p>
+                    }
+
+                    @if (Model.timezones != null && Model.timezones.Count > 0)
+                    {
+                        <p>
+                            <strong>Zonas horarias:</strong>
+                            @string.Join(", ", Model.timezones)
+                        </p>
+                    }
+
+                    @if (Model.topLevelDomain != null && Model.topLevelDomain.Count > 0)
+                    {
+                        <p>
+                            <strong>Dominio:</strong>
+                            @string.Join(", ", Model.topLevelDomain)
+                        </p>
+                    }
+
+                    <a asp-controller="Country"
+                       asp-action="Index"
+                       class="btn btn-secondary mt-3">
+                        Volver
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="mt-5">
+
+        <h2 class="mb-4">Países fronterizos</h2>
+
+        @if (borderCountries != null && borderCountries.Count > 0)
+        {
+            <div class="row">
+
+                @foreach (var borderCountry in borderCountries)
+                {
+                    <div class="col-md-3 mb-4">
+
+                        <div class="card h-100 text-center">
+
+                            <img src="@borderCountry.FlagUrl"
+                                 class="card-img-top"
+                                 alt="Bandera de @borderCountry.name"
+                                 style="height: 120px; object-fit: contain; padding: 15px;" />
+
+                            <div class="card-body">
+
+                                <h5 class="card-title">
+                                    @borderCountry.name
+                                </h5>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+        }
+        else
+        {
+            <p>Este país no tiene fronteras terrestres.</p>
+        }
+
+    </div>
+
+</div>

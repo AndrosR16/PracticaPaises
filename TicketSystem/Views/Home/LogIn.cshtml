@@ -1,0 +1,46 @@
+﻿@model TicketSystem.DTOs.Login
+
+@{
+    ViewData["Title"] = "LogIn";
+     
+}
+
+<h2 class="text-center mb-4">
+    Iniciar Sesión
+</h2>
+
+@if(ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
+
+@if(TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<form asp-controller="Home" asp-action="LogIn" method="POST">
+
+    <div class="mb-3">
+
+        <label class="form-label">Nombre Usuario</label>
+        <input asp-for="nombre_usuario" class="form-control">
+        <span asp-validation-for="nombre_usuario" class="text-danger"></span>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label class="form-label">Contraseña</label>
+        <input asp-for="password" class="form-control">
+        <span asp-validation-for="password" class="text-danger"></span>
+
+    </div>
+
+    <button type="submit" class="btn btn-outline-primary w-100">Iniciar Sesión</button>
+
+</form>

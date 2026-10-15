@@ -1,0 +1,42 @@
+﻿@model TicketSystem.DTOs.Usuario
+
+@{
+    ViewData["Title"] = "Editar Usuario"; 
+}
+
+<h4 class="text-primary mb-4">Editar Usuario</h4>
+
+<form asp-controller = "Usuario" asp-action ="Edit" method = "POST">
+
+    <div class="text-danger" asp-validation-summary ="ModelOnly">
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="nombre" class="form-label"></label>
+        <input asp-for="nombre" class="form-control">
+        <span class="text-danger" asp-validation-for="nombre"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="apellido" class="form-label"></label>
+        <input asp-for="apellido" class="form-control">
+        <span class="text-danger" asp-validation-for="apellido"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="nombre_usuario" class="form-label"></label>
+        <input asp-for="nombre_usuario" class="form-control" readonly>
+        <span class="text-danger" asp-validation-for="nombre_usuario"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="password" class="form-label"></label>
+        <input asp-for="password" class="form-control">
+        <span class="text-danger" asp-validation-for="password"></span>
+    </div>
+    <div class="mb-3">
+        <input asp-for="isAdmin" class="form-check-input">
+        <label asp-for="isAdmin" class="form-label"></label>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    <a asp-action = "Index" class="btn btn-secondary">Cancel</a>
+
+</form>
